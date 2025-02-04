@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4xy347r8t16q"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/ui.gd" id="1_7k4sj"]
+[ext_resource type="Texture2D" uid="uid://bu3g2wsu03lg8" path="res://Assets/Sprites/circle/target2.png" id="2_f6n0o"]
+[ext_resource type="Texture2D" uid="uid://b7ye7imkgwkxs" path="res://Assets/Sprites/circle/target1.png" id="3_56pxf"]
+[ext_resource type="FontFile" uid="uid://dysdujqa7y20y" path="res://Assets/Font/upheavtt.ttf" id="4_6g52o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_admoo"]
+font = ExtResource("4_6g52o")
+font_size = 40
+shadow_size = 0
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_7k4sj")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 434.0
+offset_top = 198.0
+offset_right = 474.0
+offset_bottom = 238.0
+scale = Vector2(0.542531, 0.542531)
+max_value = 10.0
+fill_mode = 4
+texture_under = ExtResource("2_f6n0o")
+texture_over = ExtResource("3_56pxf")
+texture_progress = ExtResource("2_f6n0o")
+tint_under = Color(0, 0, 0, 0.278431)
+tint_over = Color(1, 0.905882, 1, 1)
+tint_progress = Color(1, 0.379913, 0.667402, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.098
+offset_right = -1539.0
+offset_bottom = -266.6
+grow_horizontal = 2
+scale = Vector2(6.89867, 6.89867)
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("4_6g52o")
+text = "SCORE"
+label_settings = SubResource("LabelSettings_admoo")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

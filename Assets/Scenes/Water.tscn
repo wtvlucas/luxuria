@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://5xib02ym4akh"]
+
+[ext_resource type="Texture2D" uid="uid://b4aofolj4c8cs" path="res://Assets/Sprites/projetilaguabenta.png" id="2_8pnam"]
+[ext_resource type="Script" path="res://Assets/Scripts/water.gd" id="2_lpgrc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ar2kt"]
+radius = 30.0
+
+[node name="Water" type="Area2D"]
+script = ExtResource("2_lpgrc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ar2kt")
+
+[node name="WaterSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.393523, 0.393523)
+texture = ExtResource("2_8pnam")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

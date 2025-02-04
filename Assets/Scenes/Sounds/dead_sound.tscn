@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpv0mu52eg5wm"]
+
+[ext_resource type="AudioStream" uid="uid://cqmdvl2r0en2x" path="res://Assets/Sounds/Dead.mp3" id="1_vr0to"]
+
+[node name="DeadSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_vr0to")

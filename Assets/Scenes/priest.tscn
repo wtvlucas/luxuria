@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://b68hrnw4vmp81"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/priest.gd" id="1_kwfx7"]
+[ext_resource type="Texture2D" uid="uid://cntyqeoe8ysnj" path="res://Assets/Sprites/priest1.png" id="1_ljvf0"]
+[ext_resource type="PackedScene" uid="uid://dnt5nu8i14hu7" path="res://Assets/Scenes/cum_shot.tscn" id="2_2o0qb"]
+[ext_resource type="Texture2D" uid="uid://18ehsuyl7sya" path="res://Assets/Sprites/priest2.png" id="2_68cyr"]
+[ext_resource type="AudioStream" uid="uid://36s2jmeghctk" path="res://Assets/Sounds/Cum.mp3" id="5_0xjbj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8r4m"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("1_ljvf0")
+}, {
+"duration": 4.0,
+"texture": ExtResource("2_68cyr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4yen"]
+radius = 61.5891
+height = 302.813
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4b71u"]
+radius = 66.7215
+height = 318.21
+
+[node name="Priest" type="CharacterBody2D"]
+scale = Vector2(1.18, 1.18)
+script = ExtResource("1_kwfx7")
+speed = 300.0
+cumshot_scene = ExtResource("2_2o0qb")
+
+[node name="PriestSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_m8r4m")
+autoplay = "default"
+frame_progress = 0.372928
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y4yen")
+
+[node name="PriestArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PriestArea"]
+shape = SubResource("CapsuleShape2D_4b71u")
+
+[node name="CumShotTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+autostart = true
+
+[node name="CumSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_0xjbj")
+
+[connection signal="body_entered" from="PriestArea" to="." method="_on_priest_area_body_entered"]

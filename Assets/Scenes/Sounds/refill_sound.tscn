@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btxm1xffg4yp6"]
+
+[ext_resource type="AudioStream" uid="uid://b0yg8101lylcy" path="res://Assets/Sounds/Refill.mp3" id="1_41wvn"]
+
+[node name="RefillSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_41wvn")

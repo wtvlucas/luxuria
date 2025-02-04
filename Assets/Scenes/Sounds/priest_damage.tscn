@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2hth15wlvjox"]
+
+[ext_resource type="AudioStream" uid="uid://c3h52kcautash" path="res://Assets/Sounds/PriestDamage.mp3" id="1_a3mf1"]
+
+[node name="PriestDamage" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_a3mf1")

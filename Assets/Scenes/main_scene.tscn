@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://do6t6cy5ynw0l"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/main_scene.gd" id="1_1yvmx"]
+[ext_resource type="Script" path="res://Assets/Scripts/nun_body.gd" id="1_jullc"]
+[ext_resource type="Texture2D" uid="uid://ctxjwrrrdtwr7" path="res://Assets/Sprites/nun.png" id="1_ybmpc"]
+[ext_resource type="Script" path="res://Assets/Scripts/nunController.gd" id="2_bc0e5"]
+[ext_resource type="PackedScene" uid="uid://5xib02ym4akh" path="res://Assets/Scenes/Water.tscn" id="2_j0phr"]
+[ext_resource type="PackedScene" uid="uid://b68hrnw4vmp81" path="res://Assets/Scenes/priest.tscn" id="3_g2lj4"]
+[ext_resource type="Texture2D" uid="uid://cmtwy5flvt4tv" path="res://Assets/Sprites/gunwithhands.png" id="3_v3edu"]
+[ext_resource type="PackedScene" uid="uid://cle0m1lhpkww5" path="res://Assets/Scenes/refill.tscn" id="4_gp1hs"]
+[ext_resource type="PackedScene" uid="uid://c4xy347r8t16q" path="res://Assets/Scenes/mouse.tscn" id="8_1wi0i"]
+[ext_resource type="Texture2D" uid="uid://cobhsvwb7ns2u" path="res://Assets/Sprites/bg.png" id="10_sjvap"]
+[ext_resource type="AudioStream" uid="uid://c4ukdgu6cjpe5" path="res://Assets/Sounds/Main theme.mp3" id="11_y5swm"]
+[ext_resource type="AudioStream" uid="uid://32h4yjhlh4ju" path="res://Assets/Sounds/ShotWater.mp3" id="12_1kyjo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hja4u"]
+radius = 88.4211
+height = 336.842
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_1yvmx")
+water_drop_scene = ExtResource("2_j0phr")
+priest_scene = ExtResource("3_g2lj4")
+shoot_speed = 1000.0
+refill_scene = ExtResource("4_gp1hs")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1800.0
+offset_bottom = 3200.0
+texture = ExtResource("10_sjvap")
+
+[node name="UI" parent="." instance=ExtResource("8_1wi0i")]
+
+[node name="NunBody" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(933, 1580)
+scale = Vector2(0.940265, 0.940265)
+script = ExtResource("1_jullc")
+
+[node name="Nun" type="Sprite2D" parent="NunBody"]
+unique_name_in_owner = true
+position = Vector2(0.000244141, -4.21054)
+texture = ExtResource("1_ybmpc")
+script = ExtResource("2_bc0e5")
+water_drop_scene = ExtResource("2_j0phr")
+metadata/_edit_group_ = true
+
+[node name="Weapon" type="Sprite2D" parent="NunBody/Nun"]
+unique_name_in_owner = true
+position = Vector2(5, 53.62)
+texture = ExtResource("3_v3edu")
+offset = Vector2(20.7448, 5.4735)
+
+[node name="NunCollision" type="CollisionShape2D" parent="NunBody"]
+position = Vector2(-1.90735e-06, -8.42105)
+shape = SubResource("CapsuleShape2D_hja4u")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RefillTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_y5swm")
+volume_db = -12.051
+autoplay = true
+parameters/looping = true
+
+[node name="WaterSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_1kyjo")
